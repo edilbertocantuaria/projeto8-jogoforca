@@ -7,10 +7,11 @@ import words from "./words"
 
 export default function App(){
     const [disableInput, setDisableInput] = useState(true)
-    const [disableLetter, setDisableLetter] = useState(alfabeto)
+    const [disableLetter,  setDisableLetter] = useState(alfabeto)
     const [errors, setErrors]= useState(0)
     const [choosenWord, setChoosenWord] = useState([])
     const [word, setWord] = useState([])
+    // const [choosenLetter, setChoosenLetter] = useState([])
 
    
     function startGame(){
@@ -31,6 +32,14 @@ export default function App(){
         setWord(numDashes)
     }
 
+    function choosenLetter(letter){
+        // console.log(letter)
+        console.log(disableLetter)
+        const newDisableLetter=[... disableLetter, letter]
+        setDisableLetter(newDisableLetter)
+        console.log(disableLetter)
+    }
+
     return(
         <div className="screen">
             <Jogo 
@@ -39,7 +48,8 @@ export default function App(){
             word={word}/>
             
             <Letras 
-            disableLetter={disableLetter}/>
+            disableLetter={disableLetter}
+            choosenLetter={choosenLetter}/>
             
             <Chute 
             disableInput={disableInput} />

@@ -1,7 +1,7 @@
 import alfabeto from "../alphabet"
 
 export default function Letras (props){
-    const {disableLetter} = props
+    const {disableLetter, choosenLetter} = props
      
 
     return(
@@ -11,7 +11,9 @@ export default function Letras (props){
             className="letter" 
             key={letter} 
             data-test="letter" 
-            disabled={disableLetter.includes(letter)} >
+            disabled={disableLetter.includes(letter)}
+            onClick={()=>choosenLetter(letter)}
+             >
                 {letter}
             </button>)}
         </div>
