@@ -1,7 +1,7 @@
 export default function Letras (){
     return(
         <div className="keyboard">
-            {alfabeto.map (letter => <button className="letter disabled" key={letter} data-test="letter">
+            {alfabeto.map (letter => <button className="letter abled" key={letter} data-test="letter">
                 {letter}
                 </button>)}
         </div>

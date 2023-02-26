@@ -82,7 +82,9 @@
     align-items: center;
     justify-content: center;
 }
-
+.letter:hover{
+    background-color: #c3d3ec;
+}
 .disabled{
     background-color: #9FAAB5;
     color: #798A9F;
@@ -99,7 +101,6 @@
 .lose{
     color: #FF0000;
 }
-
 .win{
     color: #27AE60;
 }
