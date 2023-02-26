@@ -7,7 +7,7 @@ import forca5 from "../assets/forca5.png"
 import forca6 from "../assets/forca6.png"
 
 export default function Jogo (props){
-    const {startGame, errors} = props
+    const {startGame, errors, word} = props
     const imagesForca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
 
@@ -20,7 +20,7 @@ export default function Jogo (props){
             <button className="buttonChoiceWord" data-test="choose-word" onClick={startGame}>
                 Escolher Palavra
             </button>
-            <div className="hiddenWord inProgress" data-test="word">__ __ __ __ __ __ __ __ __ __</div>
+            <div className="hiddenWord inProgress" data-test="word">{word}</div>
         </div>
 
     </div>
