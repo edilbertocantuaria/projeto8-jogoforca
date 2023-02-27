@@ -12,40 +12,34 @@ export default function App(){
     const [choosenWord, setChoosenWord] = useState([])
     const [word, setWord] = useState([])
     const [colorWord, setColorWord]=useState("inProgress")
+    const [guessingWord, setGuessingWord]=useState("")
    
     let numDashes = [];
-    let auxWrong=0;
+    let auxWrong=0
 
     function startGame(){
         sortWord();
         setDisableInput(false);
         setDisableLetter([]);
         setErrors(0);
-        setChoosenWord([]);
-        setWord([]);
         setColorWord("inProgress")
-
-
+        setGuessingWord("")
     }
 
     function sortWord(){
         const i = Math.floor(Math.random()*words.length)
         const word = words[i];
         console.log(word);
-        console.log(word.length);
         setChoosenWord(word.split(""));
         const wordArray = word.split("");
 
-        // let numDashes = []
         wordArray.forEach( () => numDashes.push("__ "));
         setWord(numDashes);
-        console.log(numDashes.length);
     }
 
     function choosenLetter(letter){
         const newDisableLetter=[... disableLetter, letter];
         setDisableLetter(newDisableLetter);
-        console.log(disableLetter);
 
        if(choosenWord.includes(letter)){
         showLetter(letter);
@@ -55,16 +49,10 @@ export default function App(){
        } 
     }
 
-
     function showLetter(letter){
-        // console.log(`input: ${letter}`)
-        // console.log(`Palavra: ${choosenWord[0]}`)
         const newWord = [...word];
         for (let i=0; i<word.length; i++){
             if (letter===choosenWord[i]){
-                // console.log(`Valor do i: ${i}`)
-                // console.log(`Letra analisada: ${choosenWord[i]}`)
-                // console.log(`Acertou: a letra do input ${letter} confere com ${choosenWord[i]}`)
                 word[i]=choosenWord[i]
                 verifyWinning()
             }
@@ -74,9 +62,8 @@ export default function App(){
     }
 
     function wrongLetter(){
-        const auxWrong = errors+1;
+        auxWrong = errors +1;
         setErrors(auxWrong);
-        console.log(auxWrong);
         
         if(auxWrong===6){
             loseGame()
@@ -85,19 +72,45 @@ export default function App(){
 
     function verifyWinning(){
         if(!word.includes("__ ")){
+            for (let i=0; i<word.length; i++){
+                word[i]=choosenWord[i];
+            }
             const gameStatus = "win"
-            setColorWord(gameStatus)
+            setColorWord(gameStatus);
+            setDisableLetter(alfabeto);
+            setDisableInput(true);
         } 
     }
 
     function loseGame(auxWrong){
         for (let i=0; i<word.length; i++){
-            word[i]=choosenWord[i]
+            word[i]=choosenWord[i];
         }
-        const gameStatus = "lose"
-        setColorWord(gameStatus)
+        const gameStatus = "lose";
+         setColorWord(gameStatus);
+         setDisableLetter(alfabeto);
+         setDisableInput(true);
+
     }
 
+    function guessingWholeWord(){
+        let wordChoosen =""
+        choosenWord.forEach(letter =>wordChoosen += letter) 
+        console.log(guessingWord)
+         if (wordChoosen===guessingWord){
+            for (let i=0; i<word.length; i++){
+                word[i]=choosenWord[i];
+            }
+            const gameStatus = "win"
+            setColorWord(gameStatus);
+            setDisableLetter(alfabeto);
+            setDisableInput(true);
+         } else{
+            auxWrong=6;
+            setErrors(auxWrong);
+            loseGame(auxWrong);
+         }
+    }
 
     return(
         <div className="screen">
@@ -113,7 +126,10 @@ export default function App(){
             choosenLetter={choosenLetter}/>
             
             <Chute 
-            disableInput={disableInput} />
+            disableInput={disableInput} 
+            guessingWord={guessingWord}
+            setGuessingWord={setGuessingWord}
+            guessingWholeWord={guessingWholeWord}/>
         </div> 
     )
 }
