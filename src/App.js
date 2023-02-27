@@ -11,7 +11,7 @@ export default function App(){
     const [errors, setErrors]= useState(0)
     const [choosenWord, setChoosenWord] = useState([])
     const [word, setWord] = useState([])
-    // const [choosenLetter, setChoosenLetter] = useState([])
+    const [colorWord, setColorWord]=useState("inProgress")
    
     let numDashes = [];
     let auxWrong=0;
@@ -60,6 +60,7 @@ export default function App(){
                 // console.log(`Letra analisada: ${choosenWord[i]}`)
                 // console.log(`Acertou: a letra do input ${letter} confere com ${choosenWord[i]}`)
                 word[i]=choosenWord[i]
+                verifyWinning()
             }
             else {
             }
@@ -71,13 +72,24 @@ export default function App(){
         setErrors(auxWrong);
         console.log(auxWrong);
         
-        if(auxWrong==6){
+        if(auxWrong===6){
             loseGame()
         }
     }
 
+    function verifyWinning(){
+        if(!word.includes("__ ")){
+            const gameStatus = "win"
+            setColorWord(gameStatus)
+        } 
+    }
+
     function loseGame(auxWrong){
-        console.log("perdeu prayboy!")
+        for (let i=0; i<word.length; i++){
+            word[i]=choosenWord[i]
+        }
+        const gameStatus = "lose"
+        setColorWord(gameStatus)
     }
 
 
@@ -86,7 +98,9 @@ export default function App(){
             <Jogo 
             startGame={startGame}
             errors={errors}
-            word={word}/>
+            word={word}
+            colorWord={colorWord}
+         />
             
             <Letras 
             disableLetter={disableLetter}
