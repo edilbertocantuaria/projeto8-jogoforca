@@ -20,6 +20,12 @@ export default function App(){
         sortWord();
         setDisableInput(false);
         setDisableLetter([]);
+        setErrors(0);
+        setChoosenWord([]);
+        setWord([]);
+        setColorWord("inProgress")
+
+
     }
 
     function sortWord(){

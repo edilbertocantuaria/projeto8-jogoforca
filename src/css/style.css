@@ -26,7 +26,6 @@
 }
 
 .left_side-Game{
-    /* height: 466.67px; */
     height: 350px;
     display: flex;
     flex-direction: column;
@@ -37,6 +36,7 @@
     font-weight: 700;
     font-size: 50px;
 }
+
 .buttonChoiceWord{
     margin-top:20px;
     width: 200px;
@@ -55,9 +55,6 @@
     font-weight: 700;
     font-size: 20px;
     color:#FFFFFF;
-
-}
-.hiddenWord{
 
 }
 
@@ -95,16 +92,6 @@
     color: #798A9F;
     cursor: not-allowed;
 }
-
- .disabledKey{
-    background-color: #9FAAB5;
-    color: #798A9F;
-    cursor: not-allowed;
-}
-/*.abled{
-    background-color: #E1ECF4;
-    color: #39739D
-} */
 
 .inProgress{
     color: #000
