@@ -33,7 +33,7 @@ export default function App(){
         setChoosenWord(word.split(""));
         const wordArray = word.split("");
 
-        wordArray.forEach( () => numDashes.push("__ "));
+        wordArray.forEach( () => numDashes.push("_ "));
         setWord(numDashes);
     }
 
