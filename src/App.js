@@ -2,8 +2,8 @@ import { useState } from "react"
 import Jogo from "./components/Jogo"
 import Letras from "./components/Letras"
 import Chute from "./components/Chute"
-import alfabeto from "./alphabet"
-import words from "./words"
+import alfabeto from "./alfabeto"
+import words from "./palavras"
 
 export default function App(){
     const [disableInput, setDisableInput] = useState(true)
@@ -29,7 +29,7 @@ export default function App(){
     function sortWord(){
         const i = Math.floor(Math.random()*words.length)
         const word = words[i];
-        console.log(word);
+        // console.log(word);
         setChoosenWord(word.split(""));
         const wordArray = word.split("");
 
@@ -96,7 +96,7 @@ export default function App(){
     function guessingWholeWord(){
         let wordChoosen =""
         choosenWord.forEach(letter =>wordChoosen += letter) 
-        console.log(guessingWord)
+        // console.log(guessingWord)
          if (wordChoosen===guessingWord){
             for (let i=0; i<word.length; i++){
                 word[i]=choosenWord[i];

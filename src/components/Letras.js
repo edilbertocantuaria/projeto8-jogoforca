@@ -1,4 +1,4 @@
-import alfabeto from "../alphabet"
+import alfabeto from "../alfabeto"
 
 export default function Letras (props){
     const {disableLetter, choosenLetter} = props
