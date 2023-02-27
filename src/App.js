@@ -29,7 +29,7 @@ export default function App(){
     function sortWord(){
         const i = Math.floor(Math.random()*words.length)
         const word = words[i];
-        // console.log(word);
+        console.log(word);
         setChoosenWord(word.split(""));
         const wordArray = word.split("");
 
@@ -50,15 +50,17 @@ export default function App(){
     }
 
     function showLetter(letter){
-        const newWord = [...word];
+        // console.log(`input: ${letter}`)
+        // console.log(`Palavra: ${choosenWord[0]}`)
         for (let i=0; i<word.length; i++){
             if (letter===choosenWord[i]){
+                // console.log(`Valor do i: ${i}`)
+                // console.log(`Letra analisada: ${choosenWord[i]}`)
+                // console.log(`Acertou: a letra do input ${letter} confere com ${choosenWord[i]}`)
                 word[i]=choosenWord[i]
-                verifyWinning()
-            }
-            else {
             }
         }
+        verifyWinning()
     }
 
     function wrongLetter(){
@@ -71,7 +73,7 @@ export default function App(){
     }
 
     function verifyWinning(){
-        if(!word.includes("__ ")){
+        if(!word.includes("_ ")){
             for (let i=0; i<word.length; i++){
                 word[i]=choosenWord[i];
             }

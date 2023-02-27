@@ -20,7 +20,7 @@ export default function Jogo (props){
             <button className="buttonChoiceWord" data-test="choose-word" onClick={startGame}>
                 Escolher Palavra
             </button>
-            <div className={colorWord} data-test="word">{word}</div>
+            <div className={colorWord}  data-test="word">{word}</div>
         </div>
 
     </div>
